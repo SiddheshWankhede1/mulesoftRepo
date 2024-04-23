@@ -1,9 +1,13 @@
-<settings>
-<servers>
-<server>
-     <id>my.anypoint-credentials</id>
-	 <username>~~~Client~~~</username>
-	 <password>340514f7399f4d0d9296d9d3a387c310~?~688E46D9bfcb46e28F4Cd84a1c62Fef5</password>
-</server>
-</servers>
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <servers>
+    <server>
+      <id>Repository</id>
+      <username>~~~Client~~~</username>
+      <password>clientID~?~clientSecret</password>
+    </server>
+  </servers>
 </settings>
