@@ -36,9 +36,9 @@
 			      <environment>Sandbox</environment>
 			      <target>Cloudhub-US-East-2</target>
 			      <muleVersion>4.4.0</muleVersion>
-			      <server>anypoint-connected-app</server>
-			      <username>${user}</username>
-			      <password>${pass}</password>
+			      <server>my.anypoint-credentials</server>
+			      <username>Jtrip23</username>
+			      <password>2018Hw86680</password>
 			      <applicationName>cloudhub2-mnp-deployment-ap</applicationName>
 			      <replicas>1</replicas>
 			      <vCores>0.1</vCores>
@@ -55,7 +55,7 @@
 	</build>
 	 <distributionManagement>
 	    <repository>
-	      <id>anypoint-connected-app</id>
+	      <id>my.anypoint-credentials</id>
 	      <name>Corporate Repository</name>
 	      <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${project.groupId}/maven</url>
 	      <layout>default</layout>
