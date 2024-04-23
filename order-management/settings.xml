@@ -5,9 +5,9 @@ xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
 http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <servers>
     <server>
-      <id>Repository</id>
+      <id>anypoint-exchange-v3</id>
       <username>~~~Client~~~</username>
-      <password>clientID~?~clientSecret</password>
+      <password>340514f7399f4d0d9296d9d3a387c310~?~688E46D9bfcb46e28F4Cd84a1c62Fef5</password>
     </server>
   </servers>
 </settings>
