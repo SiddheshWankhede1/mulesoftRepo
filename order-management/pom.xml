@@ -15,6 +15,7 @@
 
 		<app.runtime>4.5.3</app.runtime>
 		<mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>
+		<app.runtime>4.4.0</app.runtime>
 	</properties>
 
 	<build>
@@ -35,10 +36,8 @@
 			      <provider>MC</provider>
 			      <environment>Sandbox</environment>
 			      <target>Cloudhub-US-East-2</target>
-			      <muleVersion>4.4.0</muleVersion>
+			      <muleVersion>${app.runtime}</muleVersion>
 			      <server>my.anypoint-credentials</server>
-			      <username>Jtrip23</username>
-			      <password>2018Hw86680</password>
 			      <applicationName>cloudhub2-mnp-deployment-ap</applicationName>
 			      <replicas>1</replicas>
 			      <vCores>0.1</vCores>
