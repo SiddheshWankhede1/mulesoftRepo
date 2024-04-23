@@ -49,6 +49,12 @@
 				          </inbound>
 				        </http>
 				      </deploymentSettings>
+				    <properties>
+					  <remote.api.clientId>8081</remote.api.clientId>
+				    </properties>
+				    <secureProperties>
+					  <remote.api.clientSecret>8081</remote.api.clientSecret>
+				    </secureProperties>
 				    </cloudhub2Deployment>
 				  </configuration>
 			</plugin>
