@@ -44,7 +44,7 @@
 			      <vCores>0.1</vCores>
 				<properties>
 				  <http.port>8081</http.port>
-				</properties
+				</properties>
 				<secureProperties>
 				  <https.port>8082</https.port>
 				</secureProperties>				    
