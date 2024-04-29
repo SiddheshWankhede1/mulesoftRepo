@@ -72,7 +72,6 @@ jobs:
     - uses: actions/download-artifact@master
       with:
         name: artifacts
-        path: /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/target/order-management-1.0.2-mule-application.jar
     
     - name: Upload to Exchange
       run: |
