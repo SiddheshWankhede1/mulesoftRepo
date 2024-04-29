@@ -43,7 +43,7 @@ jobs:
     # Artifact name
          name: artifact
     # A file, directory or wildcard pattern that describes what to upload
-         path: target/*.jar
+         path: /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/target/order-management-1.0.2-mule-application.jar
 
           
           
