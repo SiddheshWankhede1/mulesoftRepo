@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
           name: artifacts
-          path: target/*.jar
+          path: /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/target/order-management-1.0.2-mule-application.jar
           
           
           
