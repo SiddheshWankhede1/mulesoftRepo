@@ -1,5 +1,3 @@
-# This workflow will build a MuleSoft project and deploy to CloudHub
-
 name: Build and Deploy to Sandbox
 
 on:
