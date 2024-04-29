@@ -64,10 +64,13 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    
-    - uses: actions/download-artifact@master
+
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v4.1.7
       with:
-        name: artifacts
+        name: artifact
+    
+          
     
     - name: Upload to Exchange
       run: |
