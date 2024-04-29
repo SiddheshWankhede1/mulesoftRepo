@@ -39,17 +39,27 @@ jobs:
 
     
     - name: Stamp artifact file name with commit hash
-      run: |
+  run: |
+    # Check if any .jar files exist in the target directory
+    if [ -n "$(ls target/*.jar 2>/dev/null)" ]; then
+        # Get the name of the first .jar file
         artifactName1=$(ls target/*.jar | head -1)
+        # Get the commit hash
         commitHash=$(git rev-parse --short "$GITHUB_SHA")
-        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
-        mv $artifactName1 $artifactName2
-    
-    - name: Upload artifact 
-      uses: actions/upload-artifact@master
-      with:
-          name: artifacts
-          path: target/*.jar
+        # Create a new file name with the commit hash appended
+        artifactName2=$(echo "$artifactName1" | sed "s/.jar/-$commitHash.jar/g")
+        # Move the file with the new name
+        mv "$artifactName1" "$artifactName2"
+    else
+        echo "No .jar files found in the target directory."
+    fi
+
+- name: Upload artifact 
+  uses: actions/upload-artifact@master
+  with:
+      name: artifacts
+      path: target/*.jar
+
           
           
           
