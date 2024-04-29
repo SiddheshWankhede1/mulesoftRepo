@@ -58,9 +58,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     
-    - uses: actions/download-artifact@master
-      with:
-        name: artifacts
+
     
     - name: Upload to Exchange
       run: |
