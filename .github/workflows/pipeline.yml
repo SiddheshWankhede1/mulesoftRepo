@@ -71,7 +71,7 @@ jobs:
     
     - name: Upload to Exchange
       run: |
-        cd /home/runner/work/mulesoftRepo/mulesoftRepo/order-management artifactName=$(ls *.jar | head -1)
+        /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/target/ artifactName=$(ls *.jar | head -1)
         mvn deploy \
          -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml \
          -Dmule.artifact=$artifactName \
