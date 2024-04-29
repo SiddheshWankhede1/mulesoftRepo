@@ -35,7 +35,8 @@ jobs:
       run: mvn help:effective-settings
     
     - name: Build with Maven
-      run: mvn -B package -s order-management/settings.xml
+      run: mvn -B package -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml
+
     
     - name: Stamp artifact file name with commit hash
       run: |
