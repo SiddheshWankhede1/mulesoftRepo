@@ -20,7 +20,7 @@ jobs:
     
     - uses: actions/cache@v3
       with:
-        path: ~/.m2/repository
+        path: order-management/pom.xml
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
@@ -35,7 +35,7 @@ jobs:
       run: mvn help:effective-settings
     
     - name: Build with Maven
-      run: mvn -B package -s .maven/settings.xml
+      run: mvn -B package -s order-management/settings.xml
     
     - name: Stamp artifact file name with commit hash
       run: |
@@ -56,8 +56,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     env:
-      CA_CLIENT_ID: ${{ secrets.CA_CLIENT_ID }}
-      CA_CLIENT_SECRET: ${{ secrets.CA_CLIENT_SECRET }}
+      CLIENTID: ${{ secrets.CLIENTID }}
+      CLIENTSECRET: ${{ secrets.CLIENTSECRET }}
 
     steps:    
     
@@ -65,7 +65,7 @@ jobs:
     
     - uses: actions/cache@v3
       with:
-        path: ~/.m2/repository
+        path: order-management/pom.xml
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
@@ -78,7 +78,7 @@ jobs:
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn deploy \
-         -s .maven/settings.xml \
+         -s order-management/settings.xml \
          -Dmule.artifact=$artifactName \
        
     
@@ -88,8 +88,8 @@ jobs:
     needs: upload
     runs-on: ubuntu-latest
     env:
-      CA_CLIENT_ID: ${{ secrets.CA_CLIENT_ID }}
-      CA_CLIENT_SECRET: ${{ secrets.CA_CLIENT_SECRET }}
+      CLIENTID: ${{ secrets.CLIENTID }}
+      CLIENTSECRET: ${{ secrets.CLIENTSECRET }}
 
     steps:    
     
@@ -97,7 +97,7 @@ jobs:
     
     - uses: actions/cache@v3
       with:
-        path: ~/.m2/repository
+        path: order-management/pom.xml
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
@@ -111,6 +111,5 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
-         -s .maven/settings.xml \
+         -s order-management/settings.xml \
          -DskipTests \
-         -DskipDeploymentVerification="true"
