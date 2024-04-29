@@ -42,13 +42,14 @@ jobs:
         artifactName2=$(ls /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/target/order-management-1.0.2-mule-application.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
         mv $artifactName1 $artifactName2    
 
-    
-    - name: Upload artifact 
-      uses: actions/upload-artifact@master
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.3.3
       with:
-          name: artifacts
-          path: /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/target/order-management-1.0.2-mule-application.jar
-          
+    # Artifact name
+         name: artifact
+    # A file, directory or wildcard pattern that describes what to upload
+         path: target/*.jar
+
           
           
   upload:
