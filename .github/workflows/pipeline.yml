@@ -69,11 +69,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@master
       with:
         name: artifacts
-    - name: Test artifact download
-      run: ls -R
     
     - name: Upload to Exchange
       run: |
