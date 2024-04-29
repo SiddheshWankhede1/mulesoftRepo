@@ -61,11 +61,7 @@ jobs:
 
     
     - name: Upload to Exchange
-      run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn deploy \
-         -s order-management/settings.xml \
-         -Dmule.artifact=$artifactName \
+      run: mvn -B package -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml
        
     
  
