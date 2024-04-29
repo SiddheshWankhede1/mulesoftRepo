@@ -9,8 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      CA_CLIENT_ID: ${{ secrets.CA_CLIENT_ID }}
-      CA_CLIENT_SECRET: ${{ secrets.CA_CLIENT_SECRET }}
+      CLIENT_ID: ${{ secrets.CLIENTID }}
+      CLIENT_SECRET: ${{ secrets.CLIENTSECRET }}
     
     steps:
     
@@ -33,7 +33,7 @@ jobs:
       run: mvn help:effective-settings
     
     - name: Build with Maven
-      run: mvn -B package -s .maven/settings.xml
+      run: mvn -B package -s settings.xml
     
     - name: Stamp artifact file name with commit hash
       run: |
@@ -54,8 +54,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     env:
-      CA_CLIENT_ID: ${{ secrets.CLIENT_ID }}
-      CA_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+      CA_CLIENT_ID: ${{ secrets.CLIENTID }}
+      CA_CLIENT_SECRET: ${{ secrets.CLIENTSECRET }}
 
     steps:    
     
@@ -86,8 +86,8 @@ jobs:
     needs: upload
     runs-on: ubuntu-latest
     env:
-      CA_CLIENT_ID: ${{ secrets.CA_CLIENT_ID }}
-      CA_CLIENT_SECRET: ${{ secrets.CA_CLIENT_SECRET }}
+      CLIENT_ID: ${{ secrets.CLIENTID }}
+      CLIENT_SECRET: ${{ secrets.CLIENTSECRET }}
 
     steps:    
     
@@ -109,6 +109,4 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
-         -s .maven/settings.xml \
-         -DskipTests \
-         -DskipDeploymentVerification="true"
+         -s settings.xml \
