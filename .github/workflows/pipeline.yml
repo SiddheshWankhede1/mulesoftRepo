@@ -34,7 +34,19 @@ jobs:
     
     - name: Build with Maven
       run: mvn -B package -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml
-
+ 
+   - name: Stamp artifact file name with commit hash
+      run: |
+        artifactName1=$(ls target/*.jar | head -1)
+        commitHash=$(git rev-parse --short "$GITHUB_SHA")
+        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
+        mv $artifactName1 $artifactName2
+    
+    - name: Upload artifact 
+      uses: actions/upload-artifact@master
+      with:
+          name: artifacts
+          path: target/*.jar
     
 
           
@@ -57,11 +69,17 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
-    
 
-    
-    - name: Upload to Exchange
-      run: mvn -B package -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml
+     - uses: actions/download-artifact@master
+      with:
+        name: artifacts
+      
+   - name: Upload to Exchange
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy \
+         -s .maven/settings.xml \
+         -Dmule.artifact=$artifactName \
        
     
  
@@ -84,8 +102,15 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     
-    
+    - uses: actions/download-artifact@master
+      with:
+        name: artifacts
     
     - name: Deploy 
-      run: mvn deploy -DmuleDeploy -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
+         -s .maven/settings.xml \
+         -DskipTests \
 
