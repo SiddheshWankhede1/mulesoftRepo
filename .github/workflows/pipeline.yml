@@ -9,8 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      CLIENTID: ${{ secrets.CLIENTID }}
-      CLIENTSECRET: ${{ secrets.CLIENTSECRET }}
+      CA_CLIENT_ID: ${{ secrets.CA_CLIENT_ID }}
+      CA_CLIENT_SECRET: ${{ secrets.CA_CLIENT_SECRET }}
     
     steps:
     
@@ -35,18 +35,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml
  
-   - name: Stamp artifact file name with commit hash
-      run: |
-        artifactName1=$(ls target/*.jar | head -1)
-        commitHash=$(git rev-parse --short "$GITHUB_SHA")
-        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
-        mv $artifactName1 $artifactName2
-    
-    - name: Upload artifact 
-      uses: actions/upload-artifact@master
-      with:
-          name: artifacts
-          path: target/*.jar
+   
     
 
           
@@ -56,8 +45,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     env:
-      CLIENTID: ${{ secrets.CLIENTID }}
-      CLIENTSECRET: ${{ secrets.CLIENTSECRET }}
+      CA_CLIENT_ID: ${{ secrets.CA_CLIENT_ID }}
+      CA_CLIENT_SECRET: ${{ secrets.CA_CLIENT_SECRET }}
 
     steps:    
     
@@ -70,16 +59,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-     - uses: actions/download-artifact@master
-      with:
-        name: artifacts
+     
       
    - name: Upload to Exchange
-      run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn deploy \
-         -s .maven/settings.xml \
-         -Dmule.artifact=$artifactName \
+      run: mvn clean deploy -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml
+
        
     
  
@@ -88,8 +72,8 @@ jobs:
     needs: upload
     runs-on: ubuntu-latest
     env:
-      CLIENTID: ${{ secrets.CLIENTID }}
-      CLIENTSECRET: ${{ secrets.CLIENTSECRET }}
+      CA_CLIENT_ID: ${{ secrets.CA_CLIENT_ID }}
+      CA_CLIENT_SECRET: ${{ secrets.CA_CLIENT_SECRET }}
 
     steps:    
     
@@ -102,15 +86,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     
-    - uses: actions/download-artifact@master
-      with:
-        name: artifacts
+  
     
     - name: Deploy 
-      run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy \
-         -Dmule.artifact=$artifactName \
-         -s .maven/settings.xml \
-         -DskipTests \
+      run: mvn deploy -DmuleDeploy -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml
+
 
