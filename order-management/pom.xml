@@ -34,7 +34,7 @@
                               <cloudhub2Deployment>
                               <uri>https://anypoint.mulesoft.com</uri>
                               <provider>MC</provider>
-                              <environment>design</environment>
+                              <environment>Design</environment>
                               <target>Cloudhub-US-East-2</target>
                               <muleVersion>4.6.2</muleVersion>
                               <server>anypoint-exchange-v3</server>
