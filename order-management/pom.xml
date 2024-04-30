@@ -7,7 +7,7 @@
 	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 
-	<name>order-management-mule</name>
+	<name>order-management</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
