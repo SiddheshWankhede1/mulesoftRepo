@@ -102,9 +102,9 @@ jobs:
       with:
         name: artifact
     
-    - name: Deploy 
-      run: 
-        mvn clean deploy -DmuleDeploy \
-         -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml\
-         -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml \
-         -DskipTests \
+    - name: Deploy to CloudHub
+      uses: mulesoft/mule-cloudhub-deployer@v1
+      with:
+        CA_CLIENT_ID: ${{ secrets.CA_CLIENT_ID }}
+        CA_CLIENT_SECRET: ${{ secrets.CA_CLIENT_SECRET }}
+        file: 'target/https://productionresultssa6.blob.core.windows.net/actions-results/07b4994f-6f3e-4708-8286-520a03fbcef0/workflow-job-run-ca395085-040a-526b-2ce8-bdc85f692774/artifacts/c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c.zip' # Update with the path to your deployment package
