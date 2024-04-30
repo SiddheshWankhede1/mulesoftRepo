@@ -103,9 +103,8 @@ jobs:
         name: artifact
     
     - name: Deploy 
-      run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn deploy -DmuleDeploy \
-         -Dmule.artifact=$artifactName \
+      run: 
+        mvn clean deploy -DmuleDeploy \
+         -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml\
          -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml \
          -DskipTests \
