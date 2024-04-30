@@ -104,7 +104,7 @@ jobs:
     
     - name: Deploy
       run: |
-        artifactName=$(ls *.jar | head -1)
+        artifactName=$(artifact)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -s .maven/settings.xml \
