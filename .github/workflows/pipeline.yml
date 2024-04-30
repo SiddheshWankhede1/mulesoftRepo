@@ -74,7 +74,7 @@ jobs:
       run: |
         artifactName=artifact
         mvn deploy \
-         -s .maven/settings.xml \
+         -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml \
          -Dmule.artifact=$artifactName \      
 
           
@@ -112,5 +112,5 @@ jobs:
         artifactName=artifact
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
-         -s .maven/settings.xml \
+         -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml \
          -DskipTests \
