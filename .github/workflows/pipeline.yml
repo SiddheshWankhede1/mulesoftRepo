@@ -73,7 +73,7 @@ jobs:
           
     - name: Mulesoft Exchange Upload
 
-      uses: josedagama/mulesoft-exchange-upload@1.1.0
+      uses: mulesoftRepo/mulesoft-exchange-upload@1.1.0
       with:
          anypoint-organization-id: 8285e05c-9db8-441d-8d67-c3216085bba4
          anypoint-username: Jtrip23
