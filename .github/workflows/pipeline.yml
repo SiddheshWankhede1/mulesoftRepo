@@ -73,7 +73,7 @@ jobs:
     - name: Upload to Exchange
       run: |
         artifactName=artifact
-        mvn deploy \
+        mvn clean deploy \
          -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml \
          -Dmule.artifact=$artifactName \      
 
