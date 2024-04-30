@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>8285e05c-9db8-441d-8d67-c3216085bba4</groupId>
-	<artifactId>order-management-muleapp</artifactId>
+	<artifactId>order-management</artifactId>
 	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 
-	<name>order-management</name>
+	<name>order-management-mule</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
