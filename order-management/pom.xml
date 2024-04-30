@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>8285e05c-9db8-441d-8d67-c3216085bba4</groupId>
-	<artifactId>order-management</artifactId>
+	<artifactId>order-management-muleapp</artifactId>
 	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 
@@ -38,7 +38,7 @@
                               <target>Cloudhub-US-East-2</target>
                               <muleVersion>4.6.2</muleVersion>
                               <server>anypoint-exchange-v3</server>
-                              <applicationName>order-management-jay</applicationName>
+                              <applicationName>order-management-muleapp</applicationName>
                               <replicas>1</replicas>
                               <vCores>0.1</vCores>
 			      <integrations>
