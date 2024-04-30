@@ -72,7 +72,7 @@ jobs:
     
     - name: Upload to Exchange
       run: mvn clean deploy -DCA_CLIENT_ID=340514f7399f4d0d9296d9d3a387c310 -DCA_CLIENT_SECRET=688E46D9bfcb46e28F4Cd84a1c62Fef5 -s /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/settings.xml -f /home/runner/work/mulesoftRepo/mulesoftRepo/order-management/pom.xml \
-         -Dmule.artifact=artifact \      
+    
 
           
    
